@@ -21,3 +21,10 @@ export default {
   }
 };
 </script>
+
+<style>
+.nuxt-content {
+  font-family: OpenSans, Arial, sans-serif;
+  font-size: 0.75rem;
+}
+</style>

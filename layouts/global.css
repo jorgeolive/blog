@@ -1,0 +1,22 @@
+@font-face {
+    font-family: "Cabin";
+    src: local("Cabin"),
+     url(~assets/Cabin/Cabin-Regular.ttf) format("truetype");
+}
+
+@font-face {
+    font-family: "OpenSans";
+    src: local("OpenSans"),
+     url(~assets/OpenSans/OpenSans-Regular.ttf) format("truetype");
+}
+
+html {
+    font-family: "Cabin";   
+}
+
+body
+{
+    top: 0;
+    margin: 0;
+    background-color: rgb(233, 224, 212);
+}
