@@ -1,6 +1,6 @@
 <template>
   <header class="header graded-backround">
-      <nav style="position: sticky; display: flex; flex-direction: row-reverse; color: white; letter-spacing: 2px;"> 
+      <nav style="position: sticky; display: flex; flex-direction: row-reverse; color: white; letter-spacing: 2px;" class="graded-backround"> 
         <a style="padding: 10px;">CONTACT</a>
         <NuxtLink style="color: white; padding: 10px;" to="/about-me">ABOUT ME</NuxtLink>
         <NuxtLink style="color: white; padding: 10px;" to="/">POSTS</NuxtLink>

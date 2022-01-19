@@ -1,6 +1,6 @@
 ---
-title: Mi primer post
-description: Este es mi primer post
+title: "Entity Framework Core: When to use SplitQuery()"
+description: Since version 5.0, a really interesting feature has been added to the Set<T> Api. Is it a silver bullet though?
 custom_field: this is my custom field
 ---
 

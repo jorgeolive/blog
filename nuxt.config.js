@@ -24,7 +24,8 @@ export default {
     "~layouts/global.css",
   ],
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
-  plugins: [
+ plugins: [
+    { src: '~/plugins/vue-carousel', ssr: false },
   ],
 
   // Auto import components: https://go.nuxtjs.dev/config-components
@@ -41,7 +42,8 @@ export default {
     // https://go.nuxtjs.dev/axios
     '@nuxtjs/axios',
     '@nuxt/content',
-    'vue-social-sharing/nuxt'  //https://www.npmjs.com/package/vue-social-sharing
+    'vue-social-sharing/nuxt',
+    '@nuxt/image'//https://www.npmjs.com/package/vue-social-sharing
   ],
 
   // Axios module configuration: https://go.nuxtjs.dev/config-axios
