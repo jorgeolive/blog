@@ -1,20 +1,8 @@
 <template>
   <div>
-    <client-only placeholder="newPostCarousel">
-    <!--<carousel :per-page="1" :mouse-drag="false">
-    <slide>
-      Slide 1 Content
-    </slide>
-    <slide>
-      Slide 2 Content
-    </slide>
-  </carousel> -->
-  </client-only>
-  <div style="display: flex; flex-flow: column nowrap;" >
-    <div id="post-snapshot" v-for ="post of posts" :key=post.slug> 
+    <div style="margin: auto; width: 70%;" id="post-snapshot" v-for ="post of posts" :key=post.slug> 
       <post-preview :post="post"></post-preview>
     </div>
-  </div>
     <!--<nuxt-content :document="index"/>-->
   </div>
 </template>
