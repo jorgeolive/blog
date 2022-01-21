@@ -1,6 +1,6 @@
 <template>
-  <div>
-    <div style="margin: auto; width: 70%;" id="post-snapshot" v-for ="post of posts" :key=post.slug> 
+  <div class="posts" >
+    <div class="post" v-for ="post of posts" :key=post.slug> 
       <post-preview :post="post"></post-preview>
     </div>
     <!--<nuxt-content :document="index"/>-->
@@ -31,8 +31,14 @@ export default {
 </script>
 
 <style>
-#post-snapshot {
-  border-color: cadetblue;
+.posts {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+.post {
+  flex: 0 1 33%;
 }
 
 .nuxt-content {
