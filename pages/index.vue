@@ -20,12 +20,6 @@ export default {
     return {
       posts
     };
-  },
-  methods: {
-    formatDate(date) {
-      const options = { year: 'numeric', month: 'long', day: 'numeric' }
-      return new Date(date).toLocaleDateString('en', options)
-    }
   }
 };
 </script>
@@ -34,7 +28,7 @@ export default {
 .posts {
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-between;
+  justify-content: center;
 }
 
 .post {

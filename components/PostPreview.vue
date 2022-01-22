@@ -1,26 +1,36 @@
 <template>
   <div class="preview-card">
-      <h1>{{ post.title }}</h1>
+      <span class="date">{{formatDate(post.createdAt)}}</span>
+      <h2 style = "flex: 0 1 25%; justify-content: center;">{{ post.title }}</h2>
       <nuxt-img class="img" v-if="post.image != null" v-bind:src="post.image" 
-        width="250"
+        width="400"
         height="250"/>
-      <span>{{ post.description }}</span>
+      <span class="description">{{ post.description }}</span>
   </div>
 </template>
 
 <script>
 export default {
-    name: "post-preview",
-    props: {
-    post : Object
+  name: "post-preview",
+  props: {
+  post : Object
+  },
+  methods: {
+    formatDate(date) {
+      const options = { year: 'numeric', month: 'long', day: 'numeric' }
+      return new Date(date).toLocaleDateString('en', options)
     }
+  }
 }
 </script>
 
 <style>
 .preview-card {
+  display: flex;
+  flex-direction: column;
   min-height: 450px;
   padding: 0;
+  margin: 10px;
   background-color: rgb(255 255 255);
   font-family: MinionPro, Arial, sans-serif;
   justify-content: center;
@@ -30,9 +40,22 @@ export default {
 }
 
 .img {
+  flex: 0 0 40%;
   display: block;
   margin-left: auto;
   margin-right: auto;
+}
+
+h2 {
+  flex: 0 0 30%;
+}
+
+.description {
+  flex: 0 0 25%;
+}
+
+.date {
+  flex: 0 0 5%;
 }
 
 </style>
