@@ -1,8 +1,8 @@
 ---
 title: "Implementing a rate limiter: Leaky bucket algorithm"
-description: DDD Community will probably say so.
+description: "After the naive token bucket, things get fun now: semaphores, blocking methods, race conditions!"
 custom_field: this is my custom field
-image: 'datacenter.jpg'
+image: 'leakyBucket.png'
 tags: algorithms; systems-design
 ---
 

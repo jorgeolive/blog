@@ -1,14 +1,13 @@
 <template>
   <div class="preview-card">
-    
-    <div class="date">
-      <div style="display: flex;">
+    <div class="header">
+      <div style="display: flex; align-items: baseline;">
         <span style=" flex: 1 4 50%; text-align: left; padding-left: 10px;">{{formatDate(post.createdAt)}}</span>
         <div class="tags">
           <div class="tag" v-for="tag in tags" :key=tag>
-          <span>{{ tag }}</span>
-      </div>
-    </div>
+            <span>{{ tag }}</span>
+          </div>
+        </div>
       </div>
     </div>
     <NuxtLink :to="{ name: 'posts-slug', params: { slug: post.slug } }">
@@ -83,8 +82,9 @@ h2 {
   flex: 0 0 25%;
 }
 
-.date {
-  flex: 0 0 5%;
+.header {
+  flex: 0 1 5%;
+  padding: 0;
 }
 
 .tags {

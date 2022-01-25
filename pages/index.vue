@@ -12,6 +12,7 @@
 export default {
   async asyncData({ $content, params, error }) {
     const posts = await $content("posts")
+      .sortBy("createdAt", "desc")
       .fetch()
       .catch(err => {
         error({ statusCode: 404, message: "index not found" });
