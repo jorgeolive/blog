@@ -1,12 +1,13 @@
 <template>
-  <div>
-      <pre> {{ post }} </pre>
-      <h1>
-        {{ post.title }}
-      </h1>
-      <h3>{{ post.description }}</h3>
-      <nuxt-content :document="post" />
-  </div>
+  <article class="post-wrapper">
+      <!--<pre> {{ post }} </pre> -->
+      <div class="post-content">
+        <h1>
+          {{ post.title }}
+        </h1>
+        <nuxt-content :document="post" />
+      </div> 
+  </article>
 </template>
 
 <script>
@@ -23,3 +24,32 @@ export default {
   }
 };
 </script>
+
+<style>
+.post-wrapper {
+  display: flex;
+  justify-content: center;
+  text-align: center;
+}
+
+.post-wrapper > div > h1 {
+  font-size: 60px;
+}
+
+.post-content {
+  background-color: white;
+  flex: 0 0 75%;
+  box-shadow: 0 4px 8px 0 rgb(0 0 0 / 20%), 0 6px 20px 0 rgb(0 0 0 / 19%);
+}
+
+.nuxt-content {
+  text-align: left;
+  font-size: 18px;
+  padding: 10px;
+}
+
+.nuxt-content code {
+  justify-content: left;
+  font-size: 14px;
+}
+</style>

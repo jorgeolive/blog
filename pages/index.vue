@@ -1,9 +1,11 @@
 <template>
-  <div class="posts" >
-    <div class="post" v-for ="post of posts" :key=post.slug> 
-      <post-preview :post="post"></post-preview>
+  <div class="layout">
+    <div class="posts" >
+      <div class="post" v-for ="post of posts" :key=post.slug> 
+        <post-preview :post="post"></post-preview>
+      </div>
+      <!--<nuxt-content :document="index"/>-->
     </div>
-    <!--<nuxt-content :document="index"/>-->
   </div>
 </template>
 
@@ -26,18 +28,24 @@ export default {
 </script>
 
 <style>
+.layout {
+  display: flex;
+  justify-content: center;
+}
+
 .posts {
+  flex: 0 0 70%;
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
 }
 
 .post {
-  flex: 0 1 33%;
+  flex: 0 1 40%;
 }
 
 .nuxt-content {
-  font-family: OpenSans, Arial, sans-serif;
+  font-family: MinionPro, Arial, sans-serif;
   font-size: 0.75rem;
 }
 </style>

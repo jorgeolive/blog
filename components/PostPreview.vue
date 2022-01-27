@@ -2,7 +2,7 @@
   <div class="preview-card">
     <div class="header">
       <div style="display: flex; align-items: baseline;">
-        <span style=" flex: 1 4 50%; text-align: left; padding-left: 10px;">{{formatDate(post.createdAt)}}</span>
+        <span style=" flex: 1 4 50%; text-align: left; padding-left: 10px; padding-top: 5px;">{{formatDate(post.createdAt)}}</span>
         <div class="tags">
           <div class="tag" v-for="tag in tags" :key=tag>
             <span>{{ tag }}</span>
@@ -11,10 +11,10 @@
       </div>
     </div>
     <NuxtLink :to="{ name: 'posts-slug', params: { slug: post.slug } }">
-      <h2 style = "flex: 0 1 25%; justify-content: center;">{{ post.title }}</h2>
+      <h2>{{ post.title }}</h2>
     </NuxtLink>
     <nuxt-img class="img" v-if="post.image != null" v-bind:src="post.image" 
-      width="400"
+      width="600"
       height="250"/>
     <span class="description">{{ post.description }}</span>
   </div>
@@ -43,6 +43,9 @@ export default {
 <style>
 a {
   text-decoration: none;
+  font-size: 25px;
+  padding-left: 10px;
+  padding-right: 10px;
 }
 
 a:visited {
@@ -76,15 +79,24 @@ a:hover {
 
 h2 {
   flex: 0 0 25%;
+  min-height: 125px;
+  margin: 0;
+  justify-content: center;
+  padding: 0;
 }
 
 .description {
   flex: 0 0 25%;
+  padding: 3px;
+  font-size: 20px;
+  min-height: 50px;
 }
 
 .header {
   flex: 0 1 5%;
   padding: 0;
+  align-items: center;
+  font-size: 20px;
 }
 
 .tags {
@@ -99,7 +111,7 @@ h2 {
   display: inline;
   background-color: rgb(223 219 219);
   border-radius: 5px;
-  font-size: 15px;
+  font-size: 18px;
 }
 
 </style>

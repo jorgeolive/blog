@@ -5,10 +5,10 @@
         <NuxtLink style="color: white; padding: 10px;" to="/about-me">ABOUT ME</NuxtLink>
         <NuxtLink style="color: white; padding: 10px;" to="/">POSTS</NuxtLink>
       </nav>
-    <div style="color: white; letter-spacing: 4px; text-align: center; padding-top: 25px;">
-      <h1 style=" top: 50px;">DISTRIBUTED CONCERNS</h1>
+    <div style="color: white; letter-spacing: 4px; text-align: center; padding-top: 25px; font-size: 30px;">
+      <h1 style=" top: 50px; font-size: 40px;">DISTRIBUTED CONCERNS</h1>
     </div>
-    <div style="color: white; letter-spacing: 2px; text-align: center;">
+    <div style="color: white; letter-spacing: 2px; text-align: center; font-size: 30px;">
       A blog about software engineering by <b>Jorge Olivé Rodríguez</b>
     </div>
   </header>
@@ -22,7 +22,8 @@ export default {
 
 <style scoped>
 .header {
-  height: 200px;
+  height: 250px;
+  font-family: Cabin, Arial, sans-serif;
 }
 
 .graded-backround {
