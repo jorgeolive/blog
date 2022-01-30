@@ -43,9 +43,4 @@ export default {
 .post {
   flex: 0 1 40%;
 }
-
-.nuxt-content {
-  font-family: MinionPro, Arial, sans-serif;
-  font-size: 0.75rem;
-}
 </style>

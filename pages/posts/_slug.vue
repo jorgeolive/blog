@@ -2,7 +2,7 @@
   <article class="post-wrapper">
       <!--<pre> {{ post }} </pre> -->
       <div class="post-content">
-        <h1>
+        <h1 class="post-title">
           {{ post.title }}
         </h1>
         <nuxt-content :document="post" />
@@ -32,11 +32,13 @@ export default {
   text-align: center;
 }
 
-.post-wrapper > div > h1 {
-  font-size: 60px;
+.post-title {
+  font: MinionPro, Arial, sans-serif;
+  font-size: 45px;
 }
 
 .post-content {
+  font: SegoeUI, Arial, sans-serif;
   background-color: white;
   flex: 0 0 75%;
   box-shadow: 0 4px 8px 0 rgb(0 0 0 / 20%), 0 6px 20px 0 rgb(0 0 0 / 19%);
@@ -44,8 +46,14 @@ export default {
 
 .nuxt-content {
   text-align: left;
-  font-size: 18px;
-  padding: 10px;
+  font-size: 16px;
+  padding: 20px;
+  margin-left: 100px;
+  margin-right: 100px;
+}
+
+.nuxt content > h1 {
+  font-size: 50px;
 }
 
 .nuxt-content code {
