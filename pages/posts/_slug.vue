@@ -33,31 +33,40 @@ export default {
 }
 
 .post-title {
-  font: MinionPro, Arial, sans-serif;
+  font-family: MinionPro, Arial, sans-serif;
   font-size: 45px;
 }
 
 .post-content {
-  font: SegoeUI, Arial, sans-serif;
   background-color: white;
   flex: 0 0 75%;
   box-shadow: 0 4px 8px 0 rgb(0 0 0 / 20%), 0 6px 20px 0 rgb(0 0 0 / 19%);
 }
 
 .nuxt-content {
+  font-family: MinionPro, Arial, sans-serif;
+  font-size: 1.3rem;
   text-align: left;
-  font-size: 16px;
   padding: 20px;
   margin-left: 100px;
   margin-right: 100px;
 }
 
-.nuxt content > h1 {
-  font-size: 50px;
+.nuxt-content code {
+  color: brown;
+  font-size: 1rem;
+  text-align: left;
+  font-weight: bold;
 }
 
-.nuxt-content code {
-  justify-content: left;
-  font-size: 14px;
+.nuxt content h1 {
+  font-size: 2rem;
+  font-family: MinionPro, Arial, sans-serif;
+}
+
+a[href^="https"] {
+  font-size: 1.3rem;
+  font-family: MinionPro, Arial, sans-serif;
+  color: blue;
 }
 </style>
