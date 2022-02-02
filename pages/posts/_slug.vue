@@ -34,12 +34,12 @@ export default {
 
 .post-title {
   font-family: MinionPro, Arial, sans-serif;
-  font-size: 45px;
+  font-size: 3.5rem;
 }
 
 .post-content {
   background-color: white;
-  flex: 0 0 75%;
+  flex: 0 4 75%;
   box-shadow: 0 4px 8px 0 rgb(0 0 0 / 20%), 0 6px 20px 0 rgb(0 0 0 / 19%);
 }
 
@@ -53,6 +53,7 @@ export default {
 }
 
 .nuxt-content code {
+  flex-shrink: 2;
   color: brown;
   font-size: 1rem;
   text-align: left;
