@@ -27,19 +27,20 @@ export default {
 
 <style>
 .post-wrapper {
-  display: flex;
-  justify-content: center;
   text-align: center;
 }
 
 .post-title {
   font-family: MinionPro, Arial, sans-serif;
   font-size: 3.5rem;
+  margin: 0;
+  padding: 1em;
 }
 
 .post-content {
+  margin-left: 12em;
+  margin-right: 12em;
   background-color: white;
-  flex: 0 4 75%;
   box-shadow: 0 4px 8px 0 rgb(0 0 0 / 20%), 0 6px 20px 0 rgb(0 0 0 / 19%);
 }
 

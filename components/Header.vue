@@ -1,14 +1,14 @@
 <template>
   <header class="header graded-backround">
       <nav style="position: sticky; display: flex; flex-direction: row-reverse; color: white; letter-spacing: 2px;" class="graded-backround"> 
-        <a style="padding: 10px; font-size: 20px;">CONTACT</a>
-        <NuxtLink style="color: white; padding: 10px; font-size: 20px;" to="/about-me">ABOUT ME</NuxtLink>
-        <NuxtLink style="color: white; padding: 10px; font-size: 20px;" to="/">POSTS</NuxtLink>
+        <a style="padding: 10px; font-size: 1.25rem;">CONTACT</a>
+        <NuxtLink style="color: white; padding: 10px; font-size: 1.25rem;" to="/about-me">ABOUT ME</NuxtLink>
+        <NuxtLink style="color: white; padding: 10px; font-size: 1.25rem;" to="/">POSTS</NuxtLink>
       </nav>
-    <div style="color: white; letter-spacing: 4px; text-align: center; padding-top: 25px; font-size: 30px;">
-      <h1 style=" top: 50px; font-size: 40px;">jorgeolive.dev</h1>
+    <div style="color: white; letter-spacing: 4px; text-align: center; padding-top: 25px; font-size: 2rem;">
+      <h1 style=" top: 50px; font-size: 2rem;">jorgeolive.dev</h1>
     </div>
-    <div style="color: white; letter-spacing: 2px; text-align: center; font-size: 20px;">
+    <div style="color: white; letter-spacing: 2px; text-align: center; font-size: 1.5rem;">
       A blog about software engineering by <b>Jorge Olivé Rodríguez</b>
     </div>
   </header>
