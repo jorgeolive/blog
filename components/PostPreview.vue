@@ -13,9 +13,7 @@
     <NuxtLink :to="{ name: 'posts-slug', params: { slug: post.slug } }">
       <h2>{{ post.title }}</h2>
     </NuxtLink>
-    <nuxt-img class="img" v-if="post.image != null" v-bind:src="post.image" 
-      width="600"
-      height="250"/>
+    <nuxt-img class="img" v-if="post.image != null" v-bind:src="post.image" height = "250" sizes="sm:320px md:650px lg:1024px xxl:1000px"/>
     <span class="description">{{ post.description }}</span>
   </div>
 </template>
