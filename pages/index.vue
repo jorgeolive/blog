@@ -33,6 +33,6 @@ export default {
 }
 
 .post {
-  flex: 0 4 70%;
+  flex: 0 4 60%;
 }
 </style>

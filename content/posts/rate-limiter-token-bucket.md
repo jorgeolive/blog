@@ -2,7 +2,7 @@
 title: "Implementing a rate limiter in C# : I - Token bucket algorithm"
 description: In this very first post, we will implement the simplest rate limiter posible in C#.
 custom_field: this is my custom field
-image: 'bucket.jpeg'
+image: 'bucket-169.jpeg'
 tags: algorithms; systems-design
 ---
 

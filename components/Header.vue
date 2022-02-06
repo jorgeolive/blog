@@ -1,9 +1,8 @@
 <template>
   <header class="header graded-backround">
       <nav style="position: sticky; display: flex; flex-direction: row-reverse; color: white; letter-spacing: 0.2rem;" class="graded-backround"> 
-        <a style="padding: 0.4rem; font-size: 1.25rem;">CONTACT</a>
-        <NuxtLink style="color: white; padding: 0.4rem; font-size: 1.25rem;" to="/about-me">ABOUT ME</NuxtLink>
-        <NuxtLink style="color: white; padding: 0.4rem; font-size: 1.25rem;" to="/">POSTS</NuxtLink>
+        <NuxtLink style="color: white; padding: 0.4rem; font-size: 1.1rem;" to="/about-me">ABOUT ME</NuxtLink>
+        <NuxtLink style="color: white; padding: 0.4rem; font-size: 1.1rem;" to="/">POSTS</NuxtLink>
       </nav>
       <div class="title">
         <h1 style="font-size: 2rem;">jorgeolive.dev</h1>
@@ -33,7 +32,7 @@ export default {
   top: 3rem;
 }
 
-@media screen and (max-width: 600px) {
+@media screen and (max-width: 650px) {
   .hide-mobile {
     visibility: hidden;
   }
