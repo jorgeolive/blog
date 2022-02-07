@@ -1,7 +1,5 @@
 <template>
-  <div>
-    <h1>{{ aboutMe.title }}</h1>
-    <p>{{ aboutMe.description }}</p>
+  <div class="post-content">
     <nuxt-content :document="aboutMe"/>
   </div>
 </template>
@@ -21,4 +19,16 @@ export default {
   }
 };
 </script>
+
+<style scoped>
+.post-content {
+  font-family: MinionPro, Arial, sans-serif;
+  font-size: 1.3rem;
+  padding: 3rem;
+  margin-left: 12rem;
+  margin-right: 12rem;
+  background-color: white;
+  box-shadow: 0 4px 8px 0 rgb(0 0 0 / 20%), 0 6px 20px 0 rgb(0 0 0 / 19%);
+}
+</style>
 
