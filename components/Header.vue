@@ -5,7 +5,7 @@
         <NuxtLink style="color: white; padding: 0.4rem; font-size: 1.1rem;" to="/">POSTS</NuxtLink>
       </nav>
       <div class="title">
-        <h1 style="font-size: 2rem;">jorgeolive.dev</h1>
+        <h1 style="font-size: 2rem;">jorge-olive.net</h1>
         <div class="hide-mobile" style="font-size: 1.5rem;">A blog about software engineering by <b>Jorge Olivé Rodríguez</b></div>
       </div>
   </header>

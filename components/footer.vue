@@ -1,6 +1,6 @@
 <template>
   <div class="footer-background">
-    <div class="footer-text">Copyright 2022 - Jorge Olivé Rodríguez.            Made with <a style="color: olive;" href="https://content.nuxtjs.org/"><NuxtLogo/></a></div>
+    <div class="footer-text">Copyright 2022 - All rights reserved.  www.jorge-olive.net  Made with <a style="color: olive;" href="https://content.nuxtjs.org/"><NuxtLogo/></a></div>
   </div>
 </template>
 

@@ -7,15 +7,7 @@ About my non-dev interests, I am a avid mountain biker, swimmer, ex-musician and
 
 Feel free to contact me at j.olive.rodriguez@gmail.com or on linkedin  https://www.linkedin.com/in/jorge-oliv%C3%A9-rodr%C3%ADguez-677bb729/
 
-
-
-
-
-
-
-
-
-
+<div style="min-height: 150px"></div>
 NOTE:
 
-This blog is a WIP thing; though I am not a frontender per sé, I wanted to cook the whole thing by myself - with the help of Vue and Nuxt.js of course! - So don't expect the fanciest responsiveness, design and whatnot from this ;)
+*This blog is a WIP thing; though I am not a frontender per sé, I wanted to cook the whole thing by myself - with the help of Vue and Nuxt.js of course! - So don't expect the fanciest responsiveness, design and whatnot from this ;)*
