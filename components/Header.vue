@@ -1,8 +1,8 @@
 <template>
   <header class="header graded-backround">
-      <nav style="position: sticky; display: flex; flex-direction: row-reverse; color: white; letter-spacing: 0.2rem;" class="graded-backround"> 
-        <NuxtLink style="color: white; padding: 0.4rem; font-size: 1.1rem;" to="/about-me">ABOUT ME</NuxtLink>
-        <NuxtLink style="color: white; padding: 0.4rem; font-size: 1.1rem;" to="/">POSTS</NuxtLink>
+      <nav class="header-navbar"> 
+        <NuxtLink class="link" to="/about-me">ABOUT ME</NuxtLink>
+        <NuxtLink class="link" to="/">POSTS</NuxtLink>
       </nav>
       <div class="title">
         <h1 style="font-size: 2rem;">jorge-olive.net</h1>
@@ -21,6 +21,22 @@ export default {
 .header {
   height: 15rem;
   font-family: Cabin, Arial, sans-serif;
+}
+
+.header-navbar {
+  position: sticky;
+  display: flex;
+  flex-direction: row-reverse;
+  color: white;
+  letter-spacing: 0.2rem;
+  column-gap: 1rem;
+}
+
+.link {
+  color: white;
+  padding-top: 0.4rem;
+  padding-right: 1rem;
+  font-size: 1.1rem;
 }
 
 .title {
