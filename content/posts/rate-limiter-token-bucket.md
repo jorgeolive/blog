@@ -1,12 +1,12 @@
 ---
 title: "Implementing a rate limiter in C# : I - Token bucket algorithm"
 description: In this very first post, we will implement the simplest rate limiter posible in C#.
-custom_field: this is my custom field
+htmlMetadata: In this very first post, we will implement the simplest rate limiter posible in C# using the token bucket algorithm
 image: 'bucket-169.jpeg'
 tags: algorithms; systems-design
 ---
 
-Rate limiter is no stranger in system design interviews. But, beyond the high level detail that is typically discussed there, how would you implement one? For sure, it brings some interesting challenges - mostly concurrency related - , so why not going ahead and naively implement some of their variants?
+Rate limiter is no stranger in system design interviews. But, beyond the high level detail that is typically discussed on them, have you ever wondered how are they implemented ? For sure, they brings some interesting challenges - mostly concurrency related - , so why not going ahead and naively implement some of their variants?
 
 # What's a rate limiter, anyway?
 
@@ -18,13 +18,13 @@ So we can think of a rate limiter as **a layer that ensures that input that targ
 
 - It can be used as well to help managing malicious DoS (Denial of Service) attacks. This can be done on different OSI layers, but in this post we will be talking about Application level ( OSI 7) ones. If you're using a rate limiter with this goal in mind, you'll need to consider whether placing it in-process within your application or on a complete separate component *ala* api gateway - reverse proxy.
 
-Implementing a good rate limiter can be tricky; There're a variety of algorithms on how to control the flux of varying complexity, and the implementation might vary wildly depending on whether you're working in a distributed environment. That, and not to mention give it the flexibility to support all kind of configurations. That's the reason why there're several consolidated commercial products that already implements them -eg:[Nginx](https://www.nginx.com/blog/rate-limiting-nginx/)-. Worth mentioning, OSS community has come up with really interesting propositions as well, see[AspNetCoreRateLimit](https://github.com/stefanprodan/AspNetCoreRateLimit).
+Implementing a good rate limiter can be tricky; There're a variety of algorithms on how to control the flux of varying complexity, and the implementation might vary wildly depending on whether you're working in a distributed environment. That, and not to mention give it the flexibility to support all kind of configurations. That's the reason why there're several consolidated commercial products that already implements them - eg: [Nginx](https://www.nginx.com/blog/rate-limiting-nginx/)-. Worth mentioning, OSS community has come up with really interesting propositions as well, such as dotnet's [AspNetCoreRateLimit](https://github.com/stefanprodan/AspNetCoreRateLimit).
 
-On the next sections, we will take a look at the internals of a rate limiter visiting - and write - some of the algorithms that sit on their core implementation.
+On the next sections, we will take a look at the internals of a rate limiter visiting - and write - some of the algorithms that their core implementation is based on.
 
 # Enter token bucket algorithm
 
-The token bucket is probably the simplest of all the rate limiting algorithms, so it will be a good warm up to implement more complex stuff later on. It consists of a bucket holding a configured max number of tokens. Clients will "claim" and consume them order to access the resource; obviously, when the token is consumed, it is instantly removed from the bucket. On the meanwhile, another thread will be refilling this token bucket by a given frequency. Therefore, this can be reduced to "a given resource will be only hit n times per unit of time", being n the maximum number of tokens. Though it somewhat controls the traffic, it won't protect the resource from bursts of the bucket's capacity size.
+The token bucket is probably the simplest of all the rate limiting algorithms, so it will be a good warm up to implement more complex stuff later on. It consists of a bucket holding a configured max number of tokens. Clients will "claim" and consume them in order to access the resource; obviously, when the token is consumed, it will be instantly removed from the bucket. On the meanwhile, another thread will be refilling this token bucket on a fixed frequency. Therefore, this can be reduced to "a given resource will be only hit n times per unit of time", being n the maximum number of tokens. Though it somewhat controls the traffic, it won't protect the resource from bursts of the bucket's capacity size.
 
 # Naive C# implementation
 
@@ -56,7 +56,7 @@ public class TokenBucketRateLimiterMiddleware
     }
 }
 ```
-Let's dig now into the ```TokenBucket``` implementation. On one hand, it has a  ```ConcurrentCollection``` object holding instances of the dummy `Token` type. Actually, this is the core of the implementation, as it allows us to **concurrently consume items from its internal concurrent queue, whilst the producers concurrently put items into it.**
+Let's dig now into the ```TokenBucket``` implementation. On one hand, it has a  ```ConcurrentCollection``` object holding instances of the dummy `Token` type. Actually, this is the core of the component, as it allows us to **concurrently consume items from its internal concurrent queue, whilst the producers concurrently put items into it.**
 
  Middleware's ```InvokeAsync``` method calls will request the tokens from there. For that, we will take advantage of the  ```TryTake``` method; which will return a true / false depending on whether an item was present on its internal concurrent queue. It's important to understand the differences here with the ```Take``` method, calling ```Take``` will return an object or it will block the caller until an item is present. We don't want that, as the request has to be ditched straight away because of the requirement. 
 
@@ -84,7 +84,6 @@ public class TokenBucket
 public record Token;
 ```
 <figcaption style="font-style: italic; font-size: 1.1rem;">Incomplete TokenBucket implementation: Managing concurrency</figcaption>
-
 
 
 On the other hand, we need to take care of the periodical refill of the tokens. The ```System.Timers``` namespace already provides a ```Timer``` type that will really be handy for such purpose, as it allows to execute a delegate when the timer gets to zero on an infinite loop fashion:
@@ -153,8 +152,8 @@ app.MapGet("/weatherforecast", () =>
 ```
 Finally, running the k6 script we can see how out of all the requests, only aproximately 2 per second are actually reaching the endpoint:
 
- <nuxt-img src="token-bucket-loadtest.jpg" sizes="sm:320px md:650px lg:1024px xxl:1500px"></nuxt-img>
+ <nuxt-img src="token-bucket-loadtest.jpg" sizes="sm:320px md:650px lg:700px xl:1000px xxl:1500px"></nuxt-img>
 
-So that's it for now. You can check the source code at[https://github.com/jorgeolive/token-bucket-rate-limiter](https://github.com/jorgeolive/token-bucket-rate-limiter)
+So that's it for now. You can check the source code at [https://github.com/jorgeolive/token-bucket-rate-limiter](https://github.com/jorgeolive/token-bucket-rate-limiter)
 
 Stay tuned for the next entry in the series!

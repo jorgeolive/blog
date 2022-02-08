@@ -11,7 +11,7 @@
 </template>
 
 <script>
-export default {
+export default { 
   async asyncData({ $content, params, error }) {
     const post = await $content(`posts/${params.slug}`)
       .fetch()
@@ -21,6 +21,21 @@ export default {
     return {
       post
     };
+  },
+   head() {
+     return {
+      title: "jorge-olive.net - " + this.post.title,
+      meta: [
+        { charset: 'utf-8' },
+        { name: 'viewport', content: 'width=device-width, initial-scale=1' },
+        {
+          hid: 'description',
+          name: this.post.title,
+          content: this.post.htmlMetadata
+        }
+      ],
+      link: [{ rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }]
+    }
   }
 };
 </script>
