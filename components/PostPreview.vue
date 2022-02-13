@@ -10,7 +10,7 @@
       </div>
       <NuxtLink :to="{ name: 'posts-slug', params: { slug: post.slug } }">
         <h2>{{ post.title }}</h2>
-        <nuxt-img class="img" fit="contain" v-if="post.image != null" v-bind:src="post.image" sizes="sm:300px md:500px lg:600px xl:1000px 2xl: 1800px"/>
+        <nuxt-img class="img" v-if="post.image != null" v-bind:src="post.image" sizes="sm:300px md:500px lg:600px xl:1000px 2xl: 1800px"/>
       </NuxtLink>
       <span class="description">{{ post.description }}</span>
     </div>
@@ -60,13 +60,31 @@ a:visited {
   display: flex;
   flex-direction: column;
   padding: 0;
-  margin: 10px;
+  margin: 0.8rem;
   background-color: rgb(255 255 255);
   font-family: MinionPro, Arial, sans-serif;
   align-items: stretch;
   text-align: center;
-  border-radius: 5px;
+  border-radius: 0.3rem;
   box-shadow: 0 4px 8px 0 rgb(0 0 0 / 20%), 0 6px 20px 0 rgb(0 0 0 / 19%);
+}
+
+.preview-card:hover {
+  animation-name: hovered-post;
+  animation-duration: 1s;
+  animation-fill-mode: forwards;
+}
+
+@keyframes hovered-post {
+  from {
+    background-color: rgb(255 255 255);
+  }
+
+  to {
+    background-color: rgb(230 230 230);
+    padding: 0.1rem;
+    transform: scale(1.02);
+  }
 }
 
 .img {
