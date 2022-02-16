@@ -4,6 +4,8 @@ description: In this very first post, we will implement the simplest rate limite
 htmlMetadata: In this very first post, we will implement the simplest rate limiter posible in C# using the token bucket algorithm
 image: 'bucket-169.jpeg'
 tags: algorithms; systems-design
+postNumber: 1
+date: 'January 25, 2022'
 ---
 
 Rate limiters are no stranger in system design interviews. But, beyond the high level detail that is typically discussed on them, have you ever wondered how they are implemented ? For sure, they bring some interesting challenges - mostly concurrency related - worth to be looked at, so why not go ahead and naively implement some of their variants?

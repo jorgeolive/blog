@@ -1,7 +1,7 @@
 <template>
     <div class="preview-card">
       <div class="header">
-        <span class="date">{{formatDate(post.createdAt)}}</span>
+        <span class="date">{{post.date}}</span>
         <div class="tags">
           <div class="tag" v-for="tag in tags" :key=tag>
             <span>{{ tag }}</span>
@@ -21,12 +21,6 @@ export default {
   name: "post-preview",
   props: {
   post : Object
-  },
-  methods: {
-    formatDate(date) {
-      const options = { year: 'numeric', month: 'long', day: 'numeric' }
-      return new Date(date).toLocaleDateString('en', options)
-    }
   },
   computed: {
     tags: function () {

@@ -5,7 +5,7 @@
         <h1 class="post-title">
           {{ post.title }}
         </h1>
-        <p style="font-family: MinionPro, Arial, sans-serif; font-size: 1.3rem; font-style: italic;">On {{formatDate(post.createdAt)}}</p> 
+        <p style="font-family: MinionPro, Arial, sans-serif; font-size: 1.3rem; font-style: italic;">On {{post.date}}</p> 
         <nuxt-content :document="post" />
       </div> 
   </article>
@@ -40,12 +40,6 @@ export default {
         { hid: 'twitter:description', name: 'twitter:description', content: this.post.htmlMetadata }
       ],
       link: [{ rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }]
-    }
-  },
-  methods: {
-    formatDate(date) {
-      const options = { year: 'numeric', month: 'long', day: 'numeric' }
-      return new Date(date).toLocaleDateString('en', options)
     }
   }
 };
