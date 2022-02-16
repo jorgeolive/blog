@@ -8,7 +8,7 @@ postNumber: 2
 date: 'February 12, 2022'
 ---
 
-Okay, after the rather simple Token bucket rate limiter (RL from now on) that we implemented on the first entry of the series, we're ready to further extend its capabilities. Even though it looked apparently solid, this first RL type has a weakness: Though it ensures a max rate of hits, it doesn't care about their distribution in time. To put it more clearly, On a 10 req/second spec'ed RL, it's the same to receive / dispatch 10 requests within a 10 ms interval than make them wait equally (100ms each) within a second. This is called **burst protection**, and we're about to discover a mechanism to handle that.
+Okay, after the rather simple token bucket rate limiter (RL from now on) that we implemented on the [first entry of the series](https://www.jorge-olive.net/posts/rate-limiter-token-bucket) , we're ready to take it one step forward. Why so? Well, this first RL type has a weakness: while it ensures a max rate of hits, it doesn't care about their distribution in time. Putting it more clearly, On a 10 req/second spec'ed token bucket RL, there're no differences to receive 10 requests within a 10 ms window than having them spaced on 100ms intervals. It's clear that the former can compromise the upstream resource stability, so let's find out a mechanism to handle such situations.
 
 # Leaky bucket algorithm
 
