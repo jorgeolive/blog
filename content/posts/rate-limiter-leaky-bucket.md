@@ -12,7 +12,7 @@ Okay, after the rather simple token bucket rate limiter (RL from now on) that we
 
 # Leaky bucket algorithm
 
-We can think of this algorithm as a **funnel on which the requests will be enqueued in a FIFO fashion and dispatched on a fixed rate. It will have a max capacity, and requests coming when full will be simply discarded.** There's not much else to it; it's very simple actually. But, don't let this simplicity missguide you; It ain't no whiteboard exercise; In fact, this is one of the most populars RL algorithms, used by a number of technologies, from reverse proxies - such as NGINX - to network hardware. One could argue that instead of rate limiting, it's more oriented to manage **congestion control** concerns. Fair point, but for the purpose of this series, we will consider it as the former.
+We can think of this algorithm as a **request queue on which they'll be FIFO dispatched on a fixed rate. It will have a max capacity, and requests coming when full will be simply discarded.** There's not much else to it; it's very simple actually. But, don't let this simplicity missguide you; It ain't no whiteboard exercise; In fact, this is one of the most populars RL algorithms, used by a number of technologies, from reverse proxies - such as NGINX - to network hardware. One could argue that instead of rate limiting, it's more oriented to manage **congestion control** concerns. Fair point, but for the purpose of this series, we will consider it as the former.
 
 # C# implementation
 
@@ -62,13 +62,13 @@ The last detail worth noting is the the actual semaphore release. The leaky buck
 public class LeakyBucket
     {
         private System.Timers.Timer _timer;
-        private BlockingCollection<SemaphoreSlim> _tokens;
+        private BlockingCollection<SemaphoreSlim> _queuedRequests;
         private SemaphoreSlim _timerSemaphore;
 
         public LeakyBucket(int bucketSize, decimal requestToDispatchBySecond)
         {
             _timerSemaphore = new SemaphoreSlim(0, 1);
-            _tokens = new (bucketSize);
+            _queuedRequests = new (bucketSize);
             InitTimer(requestToDispatchBySecond);
 
             // A backround task pulls the semaphores from the _tokens concurrent collection and releases them dictated by the Timer's managed semaphore "_timerSemaphore"
@@ -80,6 +80,11 @@ public class LeakyBucket
                     requestSemaphore.Release();
                 }
             });
+        }
+
+        public bool TryEnqueue(SemaphoreSlim semaphore)
+        {
+            return _queuedRequests.TryAdd(semaphore);
         }
 
         private void InitTimer(decimal requestToDispatchBySecond)
@@ -100,11 +105,6 @@ public class LeakyBucket
             {
                 ///Ignore exceptions thrown by the semaphore in case of race conditions
             }
-        }
-
-        public bool TryEnqueue(SemaphoreSlim semaphore)
-        {
-            return _tokens.TryAdd(semaphore);
         }
     }
 ```
