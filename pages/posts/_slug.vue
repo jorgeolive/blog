@@ -33,10 +33,11 @@ export default {
         { hid: 'og:title', property: 'og:title', content: this.post.title },
         { hid: 'og:description', property: 'og:description', content: this.post.htmlMetadata },
 
-        { hid: 'twitter:url', name: 'twitter:url', content: `http://localhost:3000/posts/${this.$route.params.slug}`},
+        { hid: 'twitter:url', name: 'twitter:url', content: `https://jorge-olive.net/posts/${this.$route.params.slug}`},
         { hid: 'twitter:title', name: 'twitter:title', content: this.post.title },
         { hid: 'twitter:description', name: 'twitter:description', content: this.post.htmlMetadata },
         { hid: "twitter:image", name: "twitter:image", content: this.post.image },
+        { hid: "twitter:card" , name:"twitter:card" , content: "summary_large_image"}
       ],
       link: [{ rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }]
     }
