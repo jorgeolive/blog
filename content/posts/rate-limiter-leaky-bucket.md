@@ -1,7 +1,7 @@
 ---
 title: "Implementing a rate limiter in C# : II - Leaky bucket algorithm"
 description: This time is all about semaphores!
-htmlMetadata: Implementing a leaky-bucket algorithm rate limiter in C#
+htmlMetadata: Coding an Asp.net middleware to enqueue requests and FIFO dispatch them on a fixed rate.
 image: 'semaphoreResized.jpg'
 tags: algorithms; systems-design
 postNumber: 2
