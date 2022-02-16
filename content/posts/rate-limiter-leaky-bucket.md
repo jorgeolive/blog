@@ -4,6 +4,8 @@ description: This time is all about semaphores!
 htmlMetadata: Implementing a leaky-bucket algorithm rate limiter in C#
 image: 'semaphoreResized.jpg'
 tags: algorithms; systems-design
+postNumber: 2
+date: 'February 12, 2022'
 ---
 
 Okay, after the rather simple Token bucket rate limiter (RL from now on) that we implemented on the first entry of the series, we're ready to further extend its capabilities. Even though it looked apparently solid, this first RL type has a weakness: Though it ensures a max rate of hits, it doesn't care about their distribution in time. To put it more clearly, On a 10 req/second spec'ed RL, it's the same to receive / dispatch 10 requests within a 10 ms interval than make them wait equally (100ms each) within a second. This is called **burst protection**, and we're about to discover a mechanism to handle that.
