@@ -105,6 +105,14 @@ public class TokenBucket
         Init(maxNumberOfTokens);
     }
 
+    public void UseToken()
+    {
+        if (!_tokens.TryTake(out Token _))
+        {
+            throw new RateLimiterException();
+        }
+    }
+
     private void Init(int maxNumberOfTokens)
     {
         foreach (var _ in Enumerable.Range(0, maxNumberOfTokens))
@@ -119,14 +127,6 @@ public class TokenBucket
     {
         foreach (var _ in Enumerable.Range(0, _maxTokens - _tokens.Count))
             _tokens.Add(new Token());
-    }
-
-    public void UseToken()
-    {
-        if (!_tokens.TryTake(out Token _))
-        {
-            throw new RateLimiterException();
-        }
     }
 }
 
