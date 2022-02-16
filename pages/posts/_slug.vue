@@ -29,15 +29,14 @@ export default {
       meta: [
         { charset: 'utf-8' },
         { name: 'viewport', content: 'width=device-width, initial-scale=1' },
-        {
-          hid: 'description',
-          name: this.post.title,
-          content: this.post.htmlMetadata
-        },
+        { hid: 'description', name: this.post.title, content: this.post.htmlMetadata },
         { hid: 'og:title', property: 'og:title', content: this.post.title },
         { hid: 'og:description', property: 'og:description', content: this.post.htmlMetadata },
+
+        { hid: 'twitter:url', name: 'twitter:url', content: `http://localhost:3000/posts/${this.$route.params.slug}`},
         { hid: 'twitter:title', name: 'twitter:title', content: this.post.title },
-        { hid: 'twitter:description', name: 'twitter:description', content: this.post.htmlMetadata }
+        { hid: 'twitter:description', name: 'twitter:description', content: this.post.htmlMetadata },
+        { hid: "twitter:image", name: "twitter:image", content: this.post.image },
       ],
       link: [{ rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }]
     }
