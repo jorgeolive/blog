@@ -6,21 +6,21 @@ image: 'bucket-169.jpeg'
 tags: algorithms; systems-design
 ---
 
-Rate limiter is no stranger in system design interviews. But, beyond the high level detail that is typically discussed on them, have you ever wondered how are they implemented ? For sure, they brings some interesting challenges - mostly concurrency related - , so why not going ahead and naively implement some of their variants?
+Rate limiters are no stranger in system design interviews. But, beyond the high level detail that is typically discussed on them, have you ever wondered how they are implemented ? For sure, they bring some interesting challenges - mostly concurrency related - worth to be looked at, so why not go ahead and naively implement some of their variants?
 
 # What's a rate limiter, anyway?
 
-Let's imagine a funnel on top of a bucket for a moment. No matter how many water you pour on it, only a part of the flow will be reaching the bucket, being the rest spilled away. Also, the speed on which the bucket will be filled, will depend on the funnel's end diameter. Translating this into systems context, the funnel would be the rate limiter and the system your bucket. 
+Let's imagine a funnel on top of a bucket for a moment. No matter how much water you pour on it, only a part of the flow will reach the bucket, being the rest spilled away. Also, the speed on which the bucket will be filled, will depend on the funnel's end diameter. Translating this into systems context, the funnel would be the rate limiter and the system your bucket. 
 
-So we can think of a rate limiter as **a layer that ensures that input that targets whatever is below it is throotled according to a specific criteria**. On paper, it's a very simple concept; but as we will see soon the devil is in the details. Before diving deeper, we can enumerate a few of it usages:
+So we can think of a rate limiter as **a layer that ensures that input that targets whatever is below it is throttled according to a specific criteria**. On paper, it's a very simple concept; but as we will see soon the devil is in the details. Before diving deeper, we can enumerate a few of it usages:
 
-- With a rate limiter, you can ensure that your resource consumers won't go wild making an use of them above what is reasonable / expected. It's understood that such situation can affect adverserly your upstream services, hence, your other customers. Not good. 
+- With a rate limiter, you can ensure that your resource consumers won't go wild making an use of them above what is reasonable / expected. It's understood that such a situation can adversely affect your upstream services, hence, your other customers. Not good. 
 
-- It can be used as well to help managing malicious DoS (Denial of Service) attacks. This can be done on different OSI layers, but in this post we will be talking about Application level ( OSI 7) ones. If you're using a rate limiter with this goal in mind, you'll need to consider whether placing it in-process within your application or on a complete separate component *ala* api gateway - reverse proxy.
+- It can be used as well to help manage malicious DoS (Denial of Service) attacks. This can be done on different OSI layers, but in this post we will be talking about Application level ( OSI 7) ones. If you're using a rate limiter with this goal in mind, you'll need to consider whether placing it in-process within your application or on a completely separate component *a la* api gateway - reverse proxy.
 
-Implementing a good rate limiter can be tricky; There're a variety of algorithms on how to control the flux of varying complexity, and the implementation might vary wildly depending on whether you're working in a distributed environment. That, and not to mention give it the flexibility to support all kind of configurations. That's the reason why there're several consolidated commercial products that already implements them - eg: [Nginx](https://www.nginx.com/blog/rate-limiting-nginx/)-. Worth mentioning, OSS community has come up with really interesting propositions as well, such as dotnet's [AspNetCoreRateLimit](https://github.com/stefanprodan/AspNetCoreRateLimit).
+Implementing a good rate limiter can be tricky; There're a variety of algorithms on how to control the flux of varying complexity, and the implementation might vary wildly depending on whether you're working in a distributed environment. That, and not to mention give it the flexibility to support all kinds of configurations. That's the reason why there are several consolidated commercial products that already implement them - eg: [Nginx](https://www.nginx.com/blog/rate-limiting-nginx/)-. Worth mentioning, OSS community has come up with really interesting propositions as well, such as dotnet's [AspNetCoreRateLimit](https://github.com/stefanprodan/AspNetCoreRateLimit).
 
-On the next sections, we will take a look at the internals of a rate limiter visiting - and write - some of the algorithms that their core implementation is based on.
+In the next sections, we will take a look at the internals of a rate limiter visiting - and write - some of the algorithms that their core implementation is based on.
 
 # Enter token bucket algorithm
 
@@ -28,9 +28,9 @@ The token bucket is probably the simplest of all the rate limiting algorithms, s
 
 # Naive C# implementation
 
-We will implement the rate limiter as a middleware that will be called by every request. Depending on the policy - eg: rate limit by IP, user, etc. - or our intention (DoS protection mechanism), we might need to place it before or after other components such as authorization ones, but for now, we will keep it simple limiting all the requests regardless of their origin.
+We will implement the rate limiter as a middleware that will be called by every request. Depending on the policy - eg: rate limit by IP, user, etc. - or our intention (DoS protection mechanism), we might need to place it before or after other components such as authorization ones, but for now, we will keep it simple, limiting all the requests regardless of their origin.
 
-The rate limiter is a **singleton thread-safe component** on which all the threads will pass through; Middleware instances are singleton too, so we inject our TokenBucket there. So, basically what we will do is, make al Http requests request a token - which as we'll see, is nothing but a empty class - that will be extracted from the bucket. If there're no tokens available, the middleware will shortcircuit the request and client will receive a 503 "*Service Not available*" http status code. If the rate limiter is based on client IP, probably a 429 *Too many requests* will be more explicit on what is going on.
+The rate limiter is a **singleton thread-safe component** on which all the threads will pass through; Middleware instances are singleton too, so we inject our TokenBucket there. So, basically what we will do is, make all http requests request a token - which as we'll see, is nothing but an empty class - that will be extracted from the bucket. If there're no tokens available, the middleware will short circuit the request and the client will receive a 503 "*Service Not available*" http status code. If the rate limiter is based on client IP, probably a 429 *Too many requests* will be more explicit on what is going on.
 
 ```csharp
 public class TokenBucketRateLimiterMiddleware
@@ -131,7 +131,7 @@ public class TokenBucket
 public record Token;
 ```
 
-When the timer gets to zero, we refill as many tokens as needed. Please note that there could be some race conditions here depending on how the thread scheduler gives priority to the timer thread vs the incoming Http requests ones and on whether the token refill is executed within the timer's thread execution window slice.
+When the timer gets to zero, we refill as many tokens as needed. Please note that there could be some race conditions here depending on how the thread scheduler gives priority to the timer thread vs the incoming Http requests and on whether the token refill is executed within the timer's thread execution window slice.
 
 Almost there! at this point we only need to register this on the ```Program.cs``` and run some load tests:
 
