@@ -134,6 +134,6 @@ public class DictionarySearchTest
 }
 ```
 
- <nuxt-img src="SortedListLoadTest.jpg" sizes="sm:320px md:650px lg:700px xl:1000px xxl:1200px"></nuxt-img>
+<img src='/SortedListLoadTest.jpg' style='height: 100%; width: 100%; object-fit: contain'>
 
 An that's it for this first post in the series. On the next post, we will explore another approach involving tree-like data structures. 
