@@ -154,7 +154,7 @@ app.MapGet("/weatherforecast", () =>
 ```
 Finally, running the k6 script we can see how out of all the requests, only aproximately 2 per second are actually reaching the endpoint:
 
- <nuxt-img src="token-bucket-loadtest.jpg" sizes="sm:320px md:650px lg:700px xl:1000px xxl:1500px"></nuxt-img>
+<img src='/token-bucket-loadtest.jpg' style='height: 100%; width: 100%; object-fit: contain'>
 
 So that's it for now. You can check the source code at [https://github.com/jorgeolive/token-bucket-rate-limiter](https://github.com/jorgeolive/token-bucket-rate-limiter)
 
