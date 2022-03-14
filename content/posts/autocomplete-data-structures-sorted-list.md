@@ -58,9 +58,9 @@ public void AddWord(string word)
 }
 ```
 
-In order to add a word, it's important to acknowledge the importance of keeping the list sorted. Performance is definitely bad; Two steps, one of **O(log(n))** to search the word and then **O(n log n)** for ```Sort()``` method, given that internal implementation uses QuickSort algorithm.
+In order to add a word, it's important to acknowledge the importance of keeping the list sorted; it's a requirement for the ```BinarySearch``` method to work. 
 
-A key point here, as already mentioned, is that **using this array-based data structure is very inneficient in these scenarios having lots of new word insertions**. For these, we will need to explore the concept of auto-sorted insertions. 
+Performance is definitely not good; Two steps, one of **O(log(n))** to search the word and then **O(n log n)** for ```Sort()``` method, given that internal implementation uses QuickSort algorithm. This leaves us with superlinear  O ( n log (n)) performance. So, as already mentioned, **using this array-based data structure is very inneficient in these scenarios having lots of new word insertions**. For these, we will need to explore the concept of auto-sorted insertions. 
 
 ```csharp
 public IEnumerable<string> GetSuggestionsFor(string prefix)
