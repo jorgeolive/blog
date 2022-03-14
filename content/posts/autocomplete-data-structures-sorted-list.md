@@ -1,7 +1,7 @@
 ---
 title: "Data structures for string auto-completing (I): sorted list"
 description: Benchmarking different data structures as string autocompleters.
-htmlMetadata: Coding two simple datastructures and benchmarking them with the english dictionary
+htmlMetadata: Benchmarking different data structures as string autocompleters.
 image: 'dictionary.jpg'
 tags: data-structures;
 postNumber: 3
