@@ -8,7 +8,7 @@ postNumber: 3
 date: 'March 14, 2022'
 ---
 
-There's a rather interesting SWE interview question on how you would build a phone keyboard autocomplete. Yes, I am aware that some would catalog this as gatekeeping / irrelevant CS'ey stuff, but I find it very effective to take the inteviewee's temperature on what's his/her interest on data structures and computational concerns, which, depending on the position, might be definitely important. Note that the exercise can be stated with other flavours, such as the phone book variant. 
+There's a rather interesting SWE interview question on how you would build a phone keyboard autocomplete. Yes, I am aware that some would catalog this as gatekeeping / irrelevant CS'ey stuff, but I find it a good opener to talk about data structures and computational complexity concerns, which, depending on the position, might be a definitely important topic. Note that the exercise can be stated with other flavours, such as the phone book variant. 
 
 If we remove the system design elements - such as cacheing of hits, distribution of data, etc., the requirement is fairly simple: We need a phone keyboard service, holding internally a word dictionary, that exposes the following methods:
 
