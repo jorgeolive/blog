@@ -29,7 +29,7 @@ A very simple solution could be loading all the possible words into a ```List<st
 
 When looking for prefixes into the list, in order to avoid transversing it completely and perform a linear search, we will need to have it sorted at any moment, so we can apply sublinear - *read O(log n)* - search; This actually translates on that anytime a new word is inserted we will need to sort it. This is really inefficent in terms of performance, but it could work if we start with a pre-filled dictionary and the event of adding new words is rare.
 
-Anyway, looking for an exact word is not what we need; we have on one hand the search prefix, and on the other, a list of complete words, so when performing the List's ```BinarySearch``` we will need a **custom comparer** which will leverage string's ```StartWith()```. Then, once we find any element in the list starting with our seacrh prefix, we will scan the list left/right from that position looking for all the matches. Let's see a simple implementation: 
+Anyway, looking for an exact word is not what we need; we have on one hand the search prefix, and on the other, a list of complete words, so when performing the List's ```BinarySearch``` we will need a **custom comparer** which will leverage string's ```StartWith()```. Then, once we find any element in the list starting with our search prefix, we will scan the list left/right from that position looking for all the matches. Let's see a simple implementation: 
 
 ```csharp
 public class ListBased
