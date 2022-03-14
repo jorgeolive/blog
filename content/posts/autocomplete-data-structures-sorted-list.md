@@ -13,9 +13,11 @@ There's a rather interesting SWE interview question on how you would build a pho
 If we remove the system design elements - such as cacheing, distribution of data, etc., the requirement is fairly simple: We need a phone keyboard service, holding internally a word dictionary, that exposes the following methods:
 
 - ```InsertNewWord(string name)```, wich allows you to add new entries to the dictionary. 
-- ```GetSuggestionsFor(string prefix)```. which will return all words starting by the prefix. There's also no requirement about persisting it into HD, in memory implementation will suffice. 
+- ```GetSuggestionsFor(string prefix)```. which will return all words starting by the prefix. 
 
-There are two concerns that we should put the focus on: 
+For simplicity's sake, I won't consider neither concurrency issues - such as two threads trying to add a word a the same time. There's also no requirement about persisting it into HD, in memory implementation will suffice. 
+
+There are primarily two main concerns we should put the focus on: 
 
 - **Search performance of matching records**: Here we enter into the big O territory. Full data scans are not acceptable; if we're managing the whole english dictionary we're in the 0.5M records range, so we will have to consider using sorted list for searchs or tree-based data structures. 
 
