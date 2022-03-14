@@ -8,9 +8,9 @@ postNumber: 3
 date: 'March 14, 2022'
 ---
 
-There's a rather interesting SWE interview question on how you would build a phone keyboard autocomplete. I'm aware that this may seem gatekeeping /  irrelevant CS'ey stuff related, it serves as a good starter for discussing data structures and computational complexity concerns, which, depending on the position, might be a definitely important topic. Note that other forms of the exercise are possible, such as the phone book variant. 
+There's a rather interesting SWE interview question on how you would build a phone keyboard autocomplete. I'm aware that this may seem gatekeeping /  irrelevant CS'ey stuff related, but it serves as a good starter for discussing data structures and computational complexity concerns, which, depending on the position, might be a definitely important topic. Note that other forms of the exercise are possible, such as the phone book variant. 
 
-If we remove the system design elements - such as cacheing of hits, distribution of data, etc., the requirement is fairly simple: We need a phone keyboard service, holding internally a word dictionary, that exposes the following methods:
+If we remove the system design elements - such as cacheing of hits, distribution of data, etc., the requirement is fairly simple: We need a phone keyboard service that holds a word dictionary internally, and exposes the following methods:
 
 - ```InsertNewWord(string name)```, wich allows you to add new entries to the dictionary. 
 - ```GetSuggestionsFor(string prefix)```. which will return all words starting by the prefix. 
