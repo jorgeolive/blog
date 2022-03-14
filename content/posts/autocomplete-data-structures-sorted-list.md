@@ -27,7 +27,7 @@ As we will see, there will be trade-offs between both of them depending on our i
 
 ## Naive Approach - Sorted List
 
-A very simple solution could be loading all the possible words into a ```List<string>``` ; in terms of memory this is possible our best bet. Why discard using an array? The memory footprint is a bit smaller indeed; but it has an disadvante when adding new elements, since it will always require an array clone operation. It's not like that doesn't happen when using the list wrapper; basically the list's internal array is progressively oversized as the elements are added, so the array clone event will happen more sparsely as the number of elements is increased.
+A very simple solution could be loading all the possible words into a ```List<string>``` ; in terms of memory this is possible our best bet. Why discard using an array? The memory footprint is a bit smaller indeed; but it has an disadvantage when adding new elements, since it will always require an array clone operation. It's not like that doesn't happen when using the list wrapper; basically the list's internal array is progressively oversized as the elements are added, so the array clone event will happen more sparsely as the number of elements is increased.
 
 When looking for prefixes into the list, in order to avoid transversing it completely and perform a linear search, we will need to have it sorted at any moment, so we can apply sublinear - *read O(log n)* - search; This actually translates on that anytime a new word is inserted we will need to sort it. This is really inefficent in terms of performance, but it could work if we start with a pre-filled dictionary and the event of adding new words is rare.
 
