@@ -22,7 +22,7 @@
 </template>
 
 <script>
-import comments from "~/components/global/comments.vue";
+import comments from "~/components/global/Comments.vue";
 export default {
   components: { comments },
   async asyncData({ $content, params, error }) {
