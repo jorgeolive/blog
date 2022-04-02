@@ -1,47 +1,87 @@
 <template>
-  <article class="post-wrapper">
+  <div>
+    <article class="post-wrapper">
       <!--<pre> {{ post }} </pre> -->
       <div class="post-content content-margins">
         <h1 class="post-title">
           {{ post.title }}
         </h1>
-        <p style="font-family: MinionPro, Arial, sans-serif; font-size: 1.3rem; font-style: italic;">On {{post.date}}</p> 
-        <nuxt-content :document="post" />
-      </div> 
-  </article>
+        <p
+          style="
+            font-family: MinionPro, Arial, sans-serif;
+            font-size: 1.3rem;
+            font-style: italic;"
+        >
+          On {{ post.date }}
+        </p>
+        <nuxt-content :document="post" />  
+      <comments></comments>
+      </div>
+    </article>
+  </div>
 </template>
 
 <script>
-export default { 
+import comments from "~/components/global/Comments.vue";
+export default {
+  components: { comments },
   async asyncData({ $content, params, error }) {
     const post = await $content(`posts/${params.slug}`)
       .fetch()
-      .catch(err => {
+      .catch((err) => {
         error({ statusCode: 404, message: "Página no encontrada" });
       });
     return {
-      post
+      post,
     };
   },
-   head() {
-     return {
+  head() {
+    return {
       title: "jorge-olive.net - " + this.post.title,
       meta: [
-        { charset: 'utf-8' },
-        { name: 'viewport', content: 'width=device-width, initial-scale=1' },
-        { hid: 'og:title', property: 'og:title', content: this.post.title },
-        { hid: 'og:description', property: 'og:description', content: this.post.htmlMetadata },
-        { hid: "og:image", property: "og:image", content: `https://jorge-olive.net/${this.post.image}` },
+        { charset: "utf-8" },
+        { name: "viewport", content: "width=device-width, initial-scale=1" },
+        { hid: "og:title", property: "og:title", content: this.post.title },
+        {
+          hid: "og:description",
+          property: "og:description",
+          content: this.post.htmlMetadata,
+        },
+        {
+          hid: "og:image",
+          property: "og:image",
+          content: `https://jorge-olive.net/${this.post.image}`,
+        },
 
-        { hid: 'twitter:url', name: 'twitter:url', content: `https://jorge-olive.net/posts/${this.$route.params.slug}`},
-        { hid: 'twitter:title', name: 'twitter:title', content: this.post.title },
-        { hid: 'twitter:description', name: 'twitter:description', content: this.post.htmlMetadata },
-        { hid: "twitter:image", name: "twitter:image", content: `https://jorge-olive.net/${this.post.image}` },
-        { hid: "twitter:card" , name:"twitter:card" , content: "summary_large_image"}
+        {
+          hid: "twitter:url",
+          name: "twitter:url",
+          content: `https://jorge-olive.net/posts/${this.$route.params.slug}`,
+        },
+        {
+          hid: "twitter:title",
+          name: "twitter:title",
+          content: this.post.title,
+        },
+        {
+          hid: "twitter:description",
+          name: "twitter:description",
+          content: this.post.htmlMetadata,
+        },
+        {
+          hid: "twitter:image",
+          name: "twitter:image",
+          content: `https://jorge-olive.net/${this.post.image}`,
+        },
+        {
+          hid: "twitter:card",
+          name: "twitter:card",
+          content: "summary_large_image",
+        },
       ],
-      link: [{ rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }]
-    }
-  }
+      link: [{ rel: "icon", type: "image/x-icon", href: "/favicon.ico" }],
+    };
+  },
 };
 </script>
 
