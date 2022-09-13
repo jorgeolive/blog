@@ -199,10 +199,9 @@ It's no surprise that Json Postgresql is the slowest one here. This is due to EF
 
 ```csharp
 
-var blog = await myDbContext.Blogs.
-                FindAsync(id);
+var blog = await myDbContext.BlogAggregates.FindAsync(id);
 
-blog!.Name = newValue;
+blog!.Blog.Name = newValue;
 
 myDbContext.Entry(blog).Property(e => e.Blog).IsModified = true;
 
