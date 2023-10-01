@@ -4,7 +4,7 @@ description: Three solutions to the moving median problem in C#
 htmlMetadata: Benchmarking different data structures as string autocompleters.
 image: 'stream-resized.png'
 tags: data-structures; 
-postNumber: 5
+postNumber: 6
 date: 'October 1st, 2023'
 ---
 
