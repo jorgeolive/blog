@@ -3,7 +3,7 @@ Hello! 👋
 
 I am a spain-based software engineer passionate about all things development. In this blog I will share some stuff I find interesting about software engineering, along with some random musings on today's tendencies. My range of interests comes from C# ( my main language), databases, architecture, patterns, DDD, a bit of frontend here and there and computer science topics. 
 
-About my non-dev interests, I am a sports guy, guitar player and ocasional gamer. Lately I've been developing an obsession with roller-coasters. 
+About my non-dev interests, I am a sports guy, guitar player and ocasional gamer.
 
 Feel free to contact me at j.olive.rodriguez@gmail.com or on linkedin  https://www.linkedin.com/in/jorge-oliv%C3%A9-rodr%C3%ADguez-677bb729/
 
